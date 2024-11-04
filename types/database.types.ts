@@ -7,69 +7,83 @@ export type Json =
   | Json[]
 
 export type Database = {
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          operationName?: string
-          query?: string
-          variables?: Json
-          extensions?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
   public: {
     Tables: {
-      Chat: {
+      profiles: {
         Row: {
-          createdAt: string
-          id: number
-          user: string | null
+          avatar_url: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+          username: string | null
+          website: string | null
         }
         Insert: {
-          createdAt?: string
-          id?: number
-          user?: string | null
+          avatar_url?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
         }
         Update: {
-          createdAt?: string
-          id?: number
-          user?: string | null
+          avatar_url?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
         }
         Relationships: []
       }
-      POST: {
+      todos_no_rls: {
         Row: {
           content: string | null
-          createdAt: string
+          created_at: string
+          deleted_at: string | null
           id: number
-          updatedAt: string | null
+          updated_at: string | null
         }
         Insert: {
           content?: string | null
-          createdAt?: string
+          created_at?: string
+          deleted_at?: string | null
           id?: number
-          updatedAt?: string | null
+          updated_at?: string | null
         }
         Update: {
           content?: string | null
-          createdAt?: string
+          created_at?: string
+          deleted_at?: string | null
           id?: number
-          updatedAt?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      todos_with_rls: {
+        Row: {
+          content: string | null
+          created_at: string
+          deleted_at: string | null
+          id: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          updated_at?: string
+          user_id?: string | null
         }
         Relationships: []
       }
